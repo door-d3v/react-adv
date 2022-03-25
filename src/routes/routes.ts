@@ -1,4 +1,5 @@
 import { lazy, LazyExoticComponent } from 'react';
+import NoLazyPage from '../modules/lazy-load/pages/NoLazyPage';
 
 // :No importaremos de esta forma
 // import { LazyPage1, LazyPage2, LazyPage3 } from '../modules/lazy-load/pages';
@@ -15,43 +16,26 @@ interface Route {
 }
 
 // Definición del componente que será cargado bajo demanda (LazyLoad)
+// :Carga por modulo. Este componente se carga bajo demanda pero sus componentes internos no
 
-const Lazy1 = lazy(
+const LazyLayout = lazy(
   () =>
-    import(
-      /* webpackChunckName: LazyPage1 */ '../modules/lazy-load/pages/LazyPage1'
-    )
-);
-const Lazy2 = lazy(
-  () =>
-    import(
-      /* webpackChunckName: LazyPage2 */ '../modules/lazy-load/pages/LazyPage2'
-    )
-);
-const Lazy3 = lazy(
-  () =>
-    import(
-      /* webpackChunckName: LazyPage3 */ '../modules/lazy-load/pages/LazyPage3'
+    /* webpackChunkName: LazyLayout */ import(
+      '../modules/lazy-load/layouts/LazyLayout'
     )
 );
 
 export const routes: Route[] = [
   {
-    Component: Lazy1,
-    name: 'Lazy Page 1',
-    path: 'lazy1',
-    to: '/lazy1',
+    Component: LazyLayout,
+    name: 'Lazy Layout',
+    path: '/lazyload/*',
+    to: '/lazyload/',
   },
   {
-    Component: Lazy2,
-    name: 'Lazy Page 2',
-    path: 'lazy2',
-    to: '/lazy2',
-  },
-  {
-    Component: Lazy3,
-    name: 'Lazy Page 3',
-    path: 'lazy3',
-    to: '/lazy3',
+    Component: NoLazyPage,
+    name: 'No Lazy',
+    path: 'no-lazy',
+    to: '/no-lazy',
   },
 ];

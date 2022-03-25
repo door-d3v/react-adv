@@ -1,8 +1,8 @@
 :root {
-  --ff: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  --ff: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  --ffc: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  --ffc: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   --fs: 16px;
 }
 
@@ -64,5 +64,22 @@ nav li a {
 
 .nav-active {
   color: grey;
+  transition: all 0.3s ease-out;
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu .anchor-active {
+  color: #61dafb;
   transition: all 0.3s ease-out;
 }
